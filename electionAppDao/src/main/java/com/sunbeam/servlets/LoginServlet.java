@@ -63,9 +63,10 @@ public class LoginServlet extends HttpServlet {
 					if(user.getRole().equals("voter")) {
 						res.sendRedirect("candlist");
 					}
-					else {
+					else if (user.getRole().equals("admin")){
 						res.sendRedirect("result");
 					}
+					
 					
 					
 					
