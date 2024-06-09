@@ -6,6 +6,7 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
+import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.Cookie;
@@ -59,7 +60,11 @@ public class CandidateListServlet extends HttpServlet {
 				out.println("<title>Candidates</title>");
 				out.println("</head>");
 				out.println("<body>");
-			out.println("<h3>Online Voting</h3>");
+//			out.println("<h3>Online Voting</h3>");
+				
+				ServletContext context = this.getServletContext();
+				String namString  = context.getInitParameter("AppTitle");
+				out.printf("<h3>%s</h3>",namString);
 			
 			
 			String usernameString = "";
@@ -76,6 +81,15 @@ public class CandidateListServlet extends HttpServlet {
 			}
 			
 			out.printf("Hello, %s<hr/>\n", usernameString);
+			
+			ServletContext ctx = this.getServletContext();
+			String message = (String) ctx.getAttribute("announcement");
+			System.out.println(message);
+			
+			if(message!= null) {
+				out.printf("Announcement: %s <br/><br/>\n",message);
+			}
+			
 			
 			
 			

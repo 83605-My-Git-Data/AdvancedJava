@@ -11,6 +11,15 @@
   </welcome-file-list>
   
   
+  
+  
+  <context-param>
+  
+  		<param-name>AppTitle</param-name>
+  		<param-value>India that is bharat-Online voting</param-value>
+  		
+  </context-param>
+  
   <servlet>
   
   <servlet-name>Login</servlet-name>
@@ -107,5 +116,53 @@
 		 </servlet-mapping>
  
  
+		 
+<servlet>
+  
+  <servlet-name>DeleteCandidate</servlet-name>
+  <servlet-class>com.sunbeam.servlets.DeleteCandidateServlet</servlet-class>
+  
+ </servlet>
+ 
+ 		<servlet-mapping>
+ 
+				 <servlet-name>DeleteCandidate</servlet-name>
+				 <url-pattern>/delcand</url-pattern>
+				 
+ 
+		 </servlet-mapping>
+		 
+		 
+		 
+<servlet>
+  
+  <servlet-name>UpdateCandidate</servlet-name>
+  <servlet-class>com.sunbeam.servlets.UpdateCandidateServlet</servlet-class>
+  
+ </servlet>
+ 
+ 		<servlet-mapping>
+ 
+				 <servlet-name>UpdateCandidate</servlet-name>
+				 <url-pattern>/updcand</url-pattern>
+				 
+ 
+		 </servlet-mapping>
+ 
+ 
+ <servlet>
+  
+  <servlet-name>EditCandidate</servlet-name>
+  <servlet-class>com.sunbeam.servlets.UpdateCandidateServlet</servlet-class>
+  
+ </servlet>
+ 
+ 		<servlet-mapping>
+ 
+				 <servlet-name>EditCandidate</servlet-name>
+				 <url-pattern>/editcand</url-pattern>
+				 
+ 
+		 </servlet-mapping>
   
 </web-app>

@@ -37,7 +37,7 @@ public class RegisterServlet extends HttpServlet {
 			
 		}
 		else {
-			role = "user";
+			role = "voter";
 		}
 		
 		

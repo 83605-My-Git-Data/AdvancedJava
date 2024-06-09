@@ -3,6 +3,8 @@ package com.sunbeam.servlets;
 import java.io.IOException;
 import java.io.PrintWriter;
 
+import javax.servlet.RequestDispatcher;
+import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.Cookie;
@@ -64,7 +66,12 @@ public class LoginServlet extends HttpServlet {
 						res.sendRedirect("candlist");
 					}
 					else if (user.getRole().equals("admin")){
-						res.sendRedirect("result");
+//						res.sendRedirect("result");
+						
+						ServletContext context =  this.getServletContext();
+						RequestDispatcher rd = context.getRequestDispatcher("/result");
+						rd.forward(req, res);
+					
 					}
 					
 					

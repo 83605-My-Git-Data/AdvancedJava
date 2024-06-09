@@ -2,6 +2,7 @@ package com.sunbeam.daos;
 
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -62,6 +63,49 @@ public class CandidateDaoImpl extends Dao implements CandidateDao {
 		} // stmt.close();
 		return list;
 	}
+	
+	public Candidate findById (int id) throws Exception{
+		
+		String sql = "SELECT * FROM candidates WHERE id=?";
+				try(PreparedStatement stmt = con.prepareStatement(sql)) {
+					stmt.setInt(1, id);
+					try(ResultSet rs = stmt.executeQuery()) {
+						if(rs.next()) {
+							id = rs.getInt("id");
+							String name = rs.getString("name");
+							String party = rs.getString("party");
+							int votes = rs.getInt("votes");
+							Candidate c = new Candidate(id, name, party, votes);
+							return c;
+						}
+					} // rs.close();
+				} // stmt.close();
+			return null;
+		
+		
+	}
+	
+	
+	
+//	public Candidate findById(int id) throws Exception {
+//		+		String sql = "SELECT * FROM candidates WHERE id=?";
+//		+		try(PreparedStatement stmt = con.prepareStatement(sql)) {
+//		+			stmt.setInt(1, id);
+//		+			try(ResultSet rs = stmt.executeQuery()) {
+//		+				if(rs.next()) {
+//		+					id = rs.getInt("id");
+//		+					String name = rs.getString("name");
+//		+					String party = rs.getString("party");
+//		+					int votes = rs.getInt("votes");
+//		+					Candidate c = new Candidate(id, name, party, votes);
+//		+					return c;
+//		+				}
+//		+			} // rs.close();
+//		+		} // stmt.close();
+//		+		return null;
+//		+	}
+	
+	
 	public int save(Candidate c) throws Exception {
 		String sql = "INSERT INTO candidates VALUES(default, ?, ?, ?)";
 		try(PreparedStatement stmt = con.prepareStatement(sql)) {

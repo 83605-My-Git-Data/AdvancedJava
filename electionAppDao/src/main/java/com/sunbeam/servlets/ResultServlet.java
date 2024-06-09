@@ -70,6 +70,7 @@ public class ResultServlet extends HttpServlet{
 		        out.println("<th>Name</th>");
 		        out.println("<th>Party</th>");
 		        out.println("<th>Votes</th>");
+		        out.println("<th>Action</th>");
 		        out.println("</tr>");
 		        
 		        
@@ -79,13 +80,24 @@ public class ResultServlet extends HttpServlet{
 		        	out.println("<td>"+candidate.getName()+"</td>");
 		        	out.println("<td>"+candidate.getParty()+"</td>");
 		        	out.println("<td>"+candidate.getVotes()+"</td>");
+		        	out.printf("<td><a href='delcand?id=%d'><img width='24' height='24' src='Images/delete.jpeg'/></a><a href='updcand?id=%d'><img width='24' height='24' src='Images/update.jpeg'/> </a> </td>\n",candidate.getId(),candidate.getId());
+//		        	out.printf("<td><a href='updcand?id=%d'><img width='24' height='24' src='Images/update.jpeg'/> </a> </td>\n",candidate.getId());
+//		        	
 		        	out.println("</td>");
-					
+
 		    
 				}
 		        
 		        out.println("</table>");
+		        
+		        String msg = (String) req.getAttribute("message");
+		        		if(msg != null)
+		        			out.println("<br/><br/>" + msg + "<br/><br/>");
+		        		
+		        		
+		        out.println("<br/><a href='announcement.html'>Announcement</a>");
 
+		        out.println("<a href='logout'>Sign Out</a>");
 		        out.println("</body>");
 		        out.println("</html>");
 		        
