@@ -22,23 +22,36 @@
 	
 	
 	
-	<c:choose>
+	 
 	
-		<c:when test="${vote.voted == 1} ">
+	
+	 <c:choose>
+	<c:when test="${lb.user.status == 0 }">
+	
+	
+				${ vote.voteCandidate() }
+				voted successfully
+	
+	
+	
+	
+	
+	</c:when>
+	<c:when test="${lb.user.status ==1 }">
+	
+	
 				You have already voted
-		
-		</c:when>
-		
-		
-		<c:when test="${vote.voted == 0} ">
-				You have already voted
-				${vote.voteCandidate() }
-		
-		</c:when>
-	
-	</c:choose>
 	
 	
+	
+	
+	
+	</c:when>
+	
+	 </c:choose>
+	
+	
+		
 	
 	
 	

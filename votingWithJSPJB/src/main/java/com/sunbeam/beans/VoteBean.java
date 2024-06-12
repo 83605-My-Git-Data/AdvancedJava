@@ -46,8 +46,14 @@ public class VoteBean {
 			UserDao userDao = new UserDaoImpl();
 			
 			
+			
+			
 				candidateDao.incrementVote(candidateId);
 				voted =  userDao.updateStatus(voterID, true);
+//				System.out.println("Voter id : "+voterID+"isVoted: "+voted);
+				
+				
+				
 			
 			
 			
