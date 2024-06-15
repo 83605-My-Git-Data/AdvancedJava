@@ -47,6 +47,9 @@ public class AppController extends HttpServlet {
 		else if(page.equals("register")) {
 			uri = "/WEB-INF/views/register.jsp";
 		}
+		else if(page.equals("bloglist")) {
+			uri = "/WEB-INF/views/bloglist.jsp";
+		}
 		
 		
 		ServletContext context = this.getServletContext();
